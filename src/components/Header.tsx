@@ -88,8 +88,14 @@ const Header: React.FC = () => {
         )}
         <Typography
           variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { sm: "flex" } }}
+          component={RouterLink}
+          to="/"
+          sx={{
+            flexGrow: 1,
+            display: { sm: "flex" },
+            textDecoration: "none",
+            color: "inherit",
+          }}
         >
           TMDB
         </Typography>

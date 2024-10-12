@@ -2,25 +2,18 @@
  * @Author: Fangyu Kung
  * @Date: 2024-10-04 17:06:04
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-10-06 16:34:01
+ * @LastEditTime: 2024-10-12 16:26:00
  * @FilePath: /movie-search/src/pages/HomePage.tsx
  */
 
-import { CircularProgress, Container, Grid, Typography } from "@mui/material";
+import { CircularProgress, Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import getPopularMovies from "../api/getMovies";
+import { getPopularMovies } from "../api/getMovies";
 import MovieCard from "../components/MovieCard";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  vote_average: number;
-  release_date: string;
-}
+import { MovieI } from "../interface/MovieInterface";
 
 const HomePage: React.FC = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<MovieI[]>([]);
   const [loading, setLoading] = useState(true);
   // const [error, setError] = useState<string | null>(null);
 
@@ -66,10 +59,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <Container sx={{ marginTop: "64px", padding: "5px" }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Popular Movies
-        </Typography>
+      <Container sx={{ padding: "96px 5px 36px 5px" }}>
         <Grid container spacing={3}>
           {movies.map((movie) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
